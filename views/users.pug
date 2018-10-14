@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+    table
+        tr
+            th ID
+            th Name
+            th Email
+            th Age
+            th Address
+        each user in users
+            tr
+                td
+                    a(href=`users/` + user._id) #{user._id}
+                td
+                    a(href=`users/` + user._id) #{user.name}
+                td
+                    a(href=`users/` + user._id) #{user.email}
+                td
+                    a(href=`users/` + user._id) #{user.age}
+                td
+                    a(href=`users/` + user._id) #{user.address}
+                td: form(method='get' action=`updateUsers/` + user._id)
+                        input(type='submit',value='Edit')
+                td: form(method='post' action=`deleteUsers/` + user._id)
+                        input(type='submit',value='Delete')
